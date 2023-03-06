@@ -59,5 +59,15 @@ public class OverlayCanvas : MonoBehaviour
         UnityEngine.Debug.Log(args.data);
         UnityEngine.Debug.Log("received combo event");
         displayComboOverlay = true;
+        StartCoroutine(BooleanTimerCoroutine());
+    }
+
+    private IEnumerator BooleanTimerCoroutine()
+    {
+        // Wait for 2 seconds
+        yield return new WaitForSeconds(0.5f);
+
+        // Set the boolean back to false
+        displayComboOverlay = false;
     }
 }
