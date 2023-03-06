@@ -65,7 +65,7 @@ public class OverlayCanvas : MonoBehaviour
     private IEnumerator BooleanTimerCoroutine()
     {
         // Wait for 2 seconds
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 
         // Set the boolean back to false
         displayComboOverlay = false;
