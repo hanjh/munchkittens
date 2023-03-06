@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+
 
 public class CatDonutScript : MonoBehaviour
 {
@@ -15,13 +17,13 @@ public class CatDonutScript : MonoBehaviour
         {
             UnityEngine.Debug.Log("Collided with matching plate: " + collision.gameObject.name);
             Destroy(gameObject, destroyDelay);
+            SendCombo();
         }
         else
         {
             UnityEngine.Debug.Log("Collided with : " + collision.gameObject.name);
         }
     }
-
 
     // Start is called before the first frame update
     void Start()
@@ -33,5 +35,13 @@ public class CatDonutScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SendCombo()
+    {
+        // Do something that triggers the event
+        ComboEventManager.ComboEventArgs args = new ComboEventManager.ComboEventArgs();
+        args.data = "some data";
+        ComboEventManager.SendCombo(args);
     }
 }

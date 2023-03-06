@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: camera overlay
+    uniqueID: 3254225735
+    locked: 0
