@@ -784,7 +784,7 @@ MonoBehaviour:
   orangeDonut: {fileID: 418286703}
   distanceFromCamera: 2
   scale: 0.4
-  throwForce: 10
+  throwForce: 25
 --- !u!64 &951990109
 MeshCollider:
   m_ObjectHideFlags: 0
