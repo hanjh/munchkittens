@@ -13,6 +13,8 @@ public class GenerateDonuts : MonoBehaviour
     public float scale = 0.1f;
     public float throwForce = 20.0f;
 
+    [SerializeField] private AudioSource throwSoundEffect;
+    [SerializeField] private AudioSource colorSoundEffect;
     
     // Start is called before the first frame update
     void Start()
@@ -25,18 +27,22 @@ public class GenerateDonuts : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            colorSoundEffect.Play();
             donut = whiteDonut;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
+        {   
+            colorSoundEffect.Play();
             donut = blackDonut;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
+            colorSoundEffect.Play();
             donut = orangeDonut;
         }
         if (Input.GetMouseButtonDown(0))
         {
+            throwSoundEffect.Play();
             Camera mainCamera = Camera.main;
             Vector3 cameraPosition = mainCamera.transform.position;
             Vector3 cameraForward = mainCamera.transform.forward;

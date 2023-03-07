@@ -13,7 +13,7 @@ public class ImageComboScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        animator.Play("ComboActive");   
+    {  
+        animator.Play("ComboActive");
     }
 }
