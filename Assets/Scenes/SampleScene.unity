@@ -2068,7 +2068,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: c4b9f0928ad87594bbff8233aec59123, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: add11c345f5dd7c4b85d60bf9d78ad84, type: 2}
+      objectReference: {fileID: 2100000, guid: 63317074573c63a49959ac82226c13d2, type: 2}
     - target: {fileID: 919132149155446097, guid: c4b9f0928ad87594bbff8233aec59123, type: 3}
       propertyPath: m_Name
       value: black_plate
@@ -3338,7 +3338,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: add11c345f5dd7c4b85d60bf9d78ad84, type: 2}
+  - {fileID: 2100000, guid: 784370e4f63bb6a45a2c51b85bfdc957, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
