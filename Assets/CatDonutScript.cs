@@ -8,8 +8,8 @@ using UnityEngine;
 public class CatDonutScript : MonoBehaviour
 {
     public float destroyDelay = 2.0f;
-
     public bool attached = false;
+    public bool notCollided = true;
 
     public string DonutColor = "white";
     [SerializeField] private AudioSource correctSound;
@@ -24,16 +24,22 @@ public class CatDonutScript : MonoBehaviour
             if (plateScript != null)
             {
                 // bind the donut to the plate so that they move together
+                /*
                 attached = true;
                 transform.parent = collision.gameObject.transform;
                 plateScript.childTransforms.Add(transform);
+                */
 
                 if (collision.gameObject.name.Contains(DonutColor))
                 {
                     UnityEngine.Debug.Log("Collided with matching plate: " + collision.gameObject.name);
-                    correctSound.Play();
-                    Destroy(gameObject, destroyDelay);
-                    SendCombo();
+                    if (notCollided)
+                    {
+                        notCollided = false;
+                        correctSound.Play();
+                        SendCombo();
+                    }
+                    Destroy(gameObject, destroyDelay);  
                 }
             }
         }
