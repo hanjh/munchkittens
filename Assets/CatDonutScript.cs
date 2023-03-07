@@ -34,28 +34,27 @@ public class CatDonutScript : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("plate"))
         {
-            // only works because the script is called PlateScript.cs
-            PlateScript plateScript = collision.gameObject.GetComponent<PlateScript>();
-            if (plateScript != null)
+            // bind the donut to the plate so that they move together
+            if (collision.contacts[0].normal.y > 0.5f)
             {
-                // bind the donut to the plate so that they move together
                 transform.SetParent(collision.transform);
+            }
 
-                if (collision.gameObject.name.Contains(DonutColor))
+            if (collision.gameObject.name.Contains(DonutColor))
+            {
+                UnityEngine.Debug.Log("Collided with matching plate: " + collision.gameObject.name);
+                if (notCollided)
                 {
-                    UnityEngine.Debug.Log("Collided with matching plate: " + collision.gameObject.name);
-                    if (notCollided)
-                    {
-                        notCollided = false;
-                        correctSound.Play();
-                        SendCombo();
-                    }
-                    Destroy(gameObject, destroyDelay);
+                    notCollided = false;
+                    correctSound.Play();
+                    SendCombo();
                 }
+                Destroy(gameObject, destroyDelay);
             }
         }
         else
         {
+            notCollided = false;
             UnityEngine.Debug.Log("Collided with : " + collision.gameObject.name);
             incorrectSound.Play();
         }
