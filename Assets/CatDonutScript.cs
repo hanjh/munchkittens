@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Security.Cryptography;
 using UnityEngine;
 
 
@@ -15,6 +16,20 @@ public class CatDonutScript : MonoBehaviour
     [SerializeField] private AudioSource correctSound;
     [SerializeField] private AudioSource incorrectSound;
 
+    private Rigidbody rb;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name.Contains("plate"))
@@ -24,11 +39,7 @@ public class CatDonutScript : MonoBehaviour
             if (plateScript != null)
             {
                 // bind the donut to the plate so that they move together
-                /*
-                attached = true;
-                transform.parent = collision.gameObject.transform;
-                plateScript.childTransforms.Add(transform);
-                */
+                transform.SetParent(collision.transform);
 
                 if (collision.gameObject.name.Contains(DonutColor))
                 {
@@ -39,7 +50,7 @@ public class CatDonutScript : MonoBehaviour
                         correctSound.Play();
                         SendCombo();
                     }
-                    Destroy(gameObject, destroyDelay);  
+                    Destroy(gameObject, destroyDelay);
                 }
             }
         }
@@ -48,18 +59,6 @@ public class CatDonutScript : MonoBehaviour
             UnityEngine.Debug.Log("Collided with : " + collision.gameObject.name);
             incorrectSound.Play();
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void SendCombo()
