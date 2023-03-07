@@ -12,6 +12,8 @@ public class GenerateDonuts : MonoBehaviour
     public float distanceFromCamera = 2.0f;
     public float scale = 0.1f;
     public float throwForce = 20.0f;
+    public float spinForce = 20f;
+    private static int parity = 1;
 
     [SerializeField] private AudioSource throwSoundEffect;
     [SerializeField] private AudioSource colorSoundEffect;
@@ -57,6 +59,10 @@ public class GenerateDonuts : MonoBehaviour
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             Vector3 throwDirection = mouseRay.direction;
             rb.AddForce(throwDirection * throwForce, ForceMode.Impulse);
+
+            // reverse spin direction on every throw
+            rb.AddTorque(transform.up * spinForce * parity, ForceMode.Impulse);
+            parity *= -1;
 
         }
     }

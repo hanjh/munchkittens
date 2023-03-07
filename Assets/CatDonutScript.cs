@@ -11,18 +11,31 @@ public class CatDonutScript : MonoBehaviour
 
     public string DonutColor = "white";
 
+    private bool attached = false;
+
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Contains(DonutColor))
+        if (collision.gameObject.name.Contains("plate") && !attached)
         {
-            UnityEngine.Debug.Log("Collided with matching plate: " + collision.gameObject.name);
-            Destroy(gameObject, destroyDelay);
-            SendCombo();
+            // only works because the script is called PlateScript.cs
+            PlateScript plateScript = collision.gameObject.GetComponent<PlateScript>();
+            if (plateScript != null)
+            {
+                // bind the donut to the plate so that they move together
+                attached = true;
+                transform.parent = collision.gameObject.transform;
+                plateScript.childTransforms.Add(transform);
+
+                if (collision.gameObject.name.Contains(DonutColor))
+                {
+                    UnityEngine.Debug.Log("Collided with matching plate: " + collision.gameObject.name);
+                    Destroy(gameObject, destroyDelay);
+                    SendCombo();
+                }
+            }
+
         }
-        else
-        {
-            UnityEngine.Debug.Log("Collided with : " + collision.gameObject.name);
-        }
+
     }
 
     // Start is called before the first frame update
