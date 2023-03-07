@@ -9,18 +9,33 @@ public class CatDonutScript : MonoBehaviour
 {
     public float destroyDelay = 2.0f;
 
+    public bool attached = false;
+
     public string DonutColor = "white";
     [SerializeField] private AudioSource correctSound;
     [SerializeField] private AudioSource incorrectSound;
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Contains(DonutColor))
+        if (collision.gameObject.name.Contains("plate"))
         {
-            UnityEngine.Debug.Log("Collided with matching plate: " + collision.gameObject.name);
-            correctSound.Play();
-            Destroy(gameObject, destroyDelay);
-            SendCombo();
+            // only works because the script is called PlateScript.cs
+            PlateScript plateScript = collision.gameObject.GetComponent<PlateScript>();
+            if (plateScript != null)
+            {
+                // bind the donut to the plate so that they move together
+                attached = true;
+                transform.parent = collision.gameObject.transform;
+                plateScript.childTransforms.Add(transform);
+
+                if (collision.gameObject.name.Contains(DonutColor))
+                {
+                    UnityEngine.Debug.Log("Collided with matching plate: " + collision.gameObject.name);
+                    correctSound.Play();
+                    Destroy(gameObject, destroyDelay);
+                    SendCombo();
+                }
+            }
         }
         else
         {

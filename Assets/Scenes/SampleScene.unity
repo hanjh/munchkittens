@@ -604,6 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyDelay: 2
+  attached: 0
   DonutColor: black
   correctSound: {fileID: 585902399}
   incorrectSound: {fileID: 268208350}
@@ -1141,6 +1142,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: c4b9f0928ad87594bbff8233aec59123, type: 3}
+--- !u!114 &417789381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417789376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10016b901b4076e4a90276cc330e02ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  moveForward: 1
+  childTransforms: []
 --- !u!1 &418286703 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7773c4f51fd0f41449c66625af687db8, type: 3}
@@ -1159,6 +1175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyDelay: 2
+  attached: 0
   DonutColor: orange
   correctSound: {fileID: 585902399}
   incorrectSound: {fileID: 268208350}
@@ -1641,6 +1658,7 @@ MonoBehaviour:
   distanceFromCamera: 2
   scale: 0.4
   throwForce: 25
+  spinForce: 20
   throwSoundEffect: {fileID: 951990111}
   colorSoundEffect: {fileID: 951990112}
 --- !u!64 &951990109
@@ -2027,7 +2045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4b9f0928ad87594bbff8233aec59123, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.67
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4b9f0928ad87594bbff8233aec59123, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2035,7 +2053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4b9f0928ad87594bbff8233aec59123, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.42
+      value: 4.64
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4b9f0928ad87594bbff8233aec59123, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2194,7 +2212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4b9f0928ad87594bbff8233aec59123, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.08
+      value: 9.32
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4b9f0928ad87594bbff8233aec59123, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2202,7 +2220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4b9f0928ad87594bbff8233aec59123, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.04
+      value: -3.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4b9f0928ad87594bbff8233aec59123, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2277,6 +2295,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1235102441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235102437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10016b901b4076e4a90276cc330e02ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  moveForward: 1
+  childTransforms: []
 --- !u!1 &1323782105
 GameObject:
   m_ObjectHideFlags: 0
@@ -3136,7 +3169,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147620775945}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -9.39, y: 15.23, z: -3.25}
+  m_LocalPosition: {x: -9.71, y: 15.23, z: -3.77}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3173,6 +3206,7 @@ GameObject:
   - component: {fileID: 543450651877986995}
   - component: {fileID: 1358546487}
   - component: {fileID: 1358546488}
+  - component: {fileID: 919132147620775946}
   m_Layer: 0
   m_Name: white_plate
   m_TagString: Untagged
@@ -3180,6 +3214,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &919132147620775946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147620775945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10016b901b4076e4a90276cc330e02ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  moveForward: 1
+  childTransforms: []
 --- !u!1 &919132147930347817
 GameObject:
   m_ObjectHideFlags: 0
@@ -3225,6 +3274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyDelay: 2
+  attached: 0
   DonutColor: white
   correctSound: {fileID: 585902399}
   incorrectSound: {fileID: 268208350}
@@ -3707,7 +3757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6836695786077637916, guid: 1e56aa6865a07594796e89de9faa724d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.39
+      value: -9.71
       objectReference: {fileID: 0}
     - target: {fileID: 6836695786077637916, guid: 1e56aa6865a07594796e89de9faa724d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3715,7 +3765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6836695786077637916, guid: 1e56aa6865a07594796e89de9faa724d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.25
+      value: -3.77
       objectReference: {fileID: 0}
     - target: {fileID: 6836695786077637916, guid: 1e56aa6865a07594796e89de9faa724d, type: 3}
       propertyPath: m_LocalRotation.w
