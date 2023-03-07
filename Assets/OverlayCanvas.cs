@@ -52,14 +52,11 @@ public class OverlayCanvas : MonoBehaviour
         UnityEngine.Debug.Log(args.data);
         UnityEngine.Debug.Log("received combo event");
         
-        UnityEngine.Debug.Log("comboCoroutine ref?");
-        UnityEngine.Debug.Log(comboCoroutine is not null);
+        comboCatsAnimator.CrossFade("ComboContainerActive", 0.2f);
+
         if (comboCoroutine != null) {
             StopCoroutine(comboCoroutine);
-        } else {
-            comboCatsAnimator.Play("ComboContainerStart");
         }
-
         comboCoroutine = BooleanTimerCoroutine();
         StartCoroutine(comboCoroutine);
     }
@@ -67,9 +64,9 @@ public class OverlayCanvas : MonoBehaviour
     private IEnumerator BooleanTimerCoroutine()
     {
         // Wait for 2 seconds
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
-        comboCatsAnimator.Play("ComboContainerEnd");
         comboCoroutine = null;
+        comboCatsAnimator.CrossFade("ComboContainerIdle", 4f);
     }
 }
