@@ -10,18 +10,22 @@ public class CatDonutScript : MonoBehaviour
     public float destroyDelay = 2.0f;
 
     public string DonutColor = "white";
+    [SerializeField] private AudioSource correctSound;
+    [SerializeField] private AudioSource incorrectSound;
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name.Contains(DonutColor))
         {
             UnityEngine.Debug.Log("Collided with matching plate: " + collision.gameObject.name);
+            correctSound.Play();
             Destroy(gameObject, destroyDelay);
             SendCombo();
         }
         else
         {
             UnityEngine.Debug.Log("Collided with : " + collision.gameObject.name);
+            incorrectSound.Play();
         }
     }
 
