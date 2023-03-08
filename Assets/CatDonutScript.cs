@@ -33,8 +33,37 @@ public class CatDonutScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Contains("plate"))
-        {
+        // TODO clean up these if statements
+        if (!collision.gameObject.name.Contains("plate"))
+        {        
+            if (!collision.gameObject.name.Contains("Donut"))
+            {
+                if (!collision.gameObject.name.Contains("table"))
+                {
+                    Destroy(gameObject, 0);
+                }
+                else
+                {
+                    notCollided = false;
+                    UnityEngine.Debug.Log("Collided with : " + collision.gameObject.name);
+                    if (!hitCorrectPlate)
+                    {
+                        incorrectSound.Play();
+                        Destroy(gameObject, destroyDelay);
+                        ResetComboCount();
+                    }
+                }
+            }
+            else {
+                if (collision.gameObject.name.Contains(DonutColor))
+                {
+                    // we hit a donut of the same color before hitting the plate, do nothing for now
+                    // we will likely hit the plate soon due to gravity
+                }
+            }
+        }
+        else
+        {            
             // bind the donut to the plate so that they move together
             if (collision.contacts[0].normal.y > 0.5f)
             {
@@ -49,40 +78,30 @@ public class CatDonutScript : MonoBehaviour
                 {
                     notCollided = false;
                     correctSound.Play();
-                    SendCombo();
+                    IncrementComboCount();
                 }
             }
-        }
-        else if (collision.gameObject.name.Contains("Donut"))
-        {
-            if (collision.gameObject.name.Contains(DonutColor))
+            else
             {
-                // we hit a donut of the same color before hitting the plate, do nothing for now
-                // we will likely hit the plate soon due to gravity
+                ResetComboCount();
             }
         }
-        else if (collision.gameObject.name.Contains("table"))
-        {
-            notCollided = false;
-            UnityEngine.Debug.Log("Collided with : " + collision.gameObject.name);
-            if (!hitCorrectPlate)
-            {
-                incorrectSound.Play();
-                Destroy(gameObject, destroyDelay);
-            }
-        }
-        else
-        {
-            // we hit something that is neither the table nor a plate, likely the floor or walls
-            Destroy(gameObject, 0);
-        }
+
     }
 
-    public void SendCombo()
+    public void ResetComboCount()
+    {
+        ComboEventManager.ComboEventArgs args = new ComboEventManager.ComboEventArgs();
+        args.data = "resetting combo";
+        ComboEventManager.ResetComboCount(args);
+
+    }
+
+    public void IncrementComboCount()
     {
         // Do something that triggers the event
         ComboEventManager.ComboEventArgs args = new ComboEventManager.ComboEventArgs();
-        args.data = "some data";
-        ComboEventManager.SendCombo(args);
+        args.data = "incrementing combo";
+        ComboEventManager.IncrementComboCount(args);
     }
 }

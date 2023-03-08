@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ComboEventManager : MonoBehaviour
 {
+    public static int comboCount = 0;
+    private static int comboThreshold = 3;
     public class ComboEventArgs : EventArgs
     {
         public string data;
@@ -12,6 +14,21 @@ public class ComboEventManager : MonoBehaviour
 
     public delegate void ComboEvent(ComboEventArgs args);
     public static event ComboEvent Combo;
+
+    public static void IncrementComboCount(ComboEventArgs args)
+    {
+        comboCount++;
+        if (comboCount >= comboThreshold)
+        {
+            comboCount = 0;
+            SendCombo(args);
+        }
+    }
+
+    public static void ResetComboCount(ComboEventArgs args)
+    {
+        comboCount = 0;
+    }
 
     public static void SendCombo(ComboEventArgs args)
     {
