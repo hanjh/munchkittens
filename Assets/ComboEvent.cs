@@ -18,7 +18,10 @@ public class ComboEventManager : MonoBehaviour
 
     public static void IncrementTotalScore(ComboEventArgs args)
     {
-        totalScore += 100;
+        if (CountdownTimer.isTimerActive)
+        {
+            totalScore += 100;
+        }
     }
 
     public static void IncrementComboCount(ComboEventArgs args)

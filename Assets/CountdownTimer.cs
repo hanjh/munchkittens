@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class CountdownTimer : MonoBehaviour
 { 
    public float timeValue = 90;
-   private bool isTimerActive = false;
+   public static bool isTimerActive = false;
    public TextMeshProUGUI countdownText;
 
    private void Start() {
