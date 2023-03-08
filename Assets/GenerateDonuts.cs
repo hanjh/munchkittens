@@ -84,6 +84,7 @@ public class GenerateDonuts : MonoBehaviour
         Vector3 nextDonutScale = new Vector3(nextScale, nextScale, nextScale);
         nextDonut = Instantiate(donut, spawnPosition, Quaternion.identity);
         nextDonut.transform.localScale = nextDonutScale;
+        nextDonut.layer = LayerMask.NameToLayer("IgnoreLight");
 
         currentColor = generator.GenerateRandomColorEnum();
     }
