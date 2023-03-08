@@ -1794,8 +1794,10 @@ MonoBehaviour:
   whiteDonut: {fileID: 919132147930347817}
   blackDonut: {fileID: 258189166}
   orangeDonut: {fileID: 418286703}
+  nextDonut: {fileID: 0}
   distanceFromCamera: 2
   scale: 0.4
+  nextScale: 0.1
   throwForce: 25
   spinForce: 20
   throwSoundEffect: {fileID: 951990111}
@@ -2006,6 +2008,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &951990114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951990106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a3cf36354257a4b8501220a1a305df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

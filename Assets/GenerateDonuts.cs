@@ -9,11 +9,15 @@ public class GenerateDonuts : MonoBehaviour
     public GameObject whiteDonut;
     public GameObject blackDonut;
     public GameObject orangeDonut;
+    public GameObject nextDonut;
     public float distanceFromCamera = 2.0f;
-    public float scale = 0.1f;
+    public float scale = 1.0f;
+    public float nextScale = 0.1f;
     public float throwForce = 20.0f;
     public float spinForce = 20f;
     private static int parity = 1;
+    private RandomEnumGenerator generator;
+    private ColorEnum currentColor;
 
     [SerializeField] private AudioSource throwSoundEffect;
     [SerializeField] private AudioSource colorSoundEffect;
@@ -21,27 +25,14 @@ public class GenerateDonuts : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        generator = GetComponent<RandomEnumGenerator>();
+        currentColor = generator.GenerateRandomColorEnum();
+        setDonut();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            colorSoundEffect.Play();
-            donut = whiteDonut;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {   
-            colorSoundEffect.Play();
-            donut = blackDonut;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            colorSoundEffect.Play();
-            donut = orangeDonut;
-        }
         if (Input.GetMouseButtonDown(0))
         {
             throwSoundEffect.Play();
@@ -64,6 +55,36 @@ public class GenerateDonuts : MonoBehaviour
             rb.AddTorque(transform.up * spinForce * parity, ForceMode.Impulse);
             parity *= -1;
 
+            setDonut();
         }
+    }
+
+    public void setDonut() {
+        switch (currentColor) {
+            case ColorEnum.White:
+                donut = whiteDonut;
+                break;
+            case ColorEnum.Black:
+                donut = blackDonut;
+                break;
+            case ColorEnum.Orange:
+                donut = orangeDonut;
+                break;
+            default:
+                break;
+        }
+        if (nextDonut != null) {
+            Destroy(nextDonut);
+        }
+        Camera mainCamera = Camera.main;
+        Vector3 cameraPosition = mainCamera.transform.position;
+        Vector3 cameraForward = mainCamera.transform.forward;
+
+        Vector3 spawnPosition = cameraPosition + cameraForward * distanceFromCamera + Vector3.back;
+        Vector3 nextDonutScale = new Vector3(nextScale, nextScale, nextScale);
+        nextDonut = Instantiate(donut, spawnPosition, Quaternion.identity);
+        nextDonut.transform.localScale = nextDonutScale;
+
+        currentColor = generator.GenerateRandomColorEnum();
     }
 }
