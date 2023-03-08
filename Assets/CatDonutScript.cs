@@ -78,6 +78,7 @@ public class CatDonutScript : MonoBehaviour
                 {
                     notCollided = false;
                     correctSound.Play();
+                    IncrementTotalScore();
                     IncrementComboCount();
                 }
             }
@@ -89,12 +90,18 @@ public class CatDonutScript : MonoBehaviour
 
     }
 
+    public void IncrementTotalScore()
+    {
+        ComboEventManager.ComboEventArgs args = new ComboEventManager.ComboEventArgs();
+        args.data = "incrementing total score";
+        ComboEventManager.IncrementTotalScore(args);
+    }
+
     public void ResetComboCount()
     {
         ComboEventManager.ComboEventArgs args = new ComboEventManager.ComboEventArgs();
         args.data = "resetting combo";
         ComboEventManager.ResetComboCount(args);
-
     }
 
     public void IncrementComboCount()
