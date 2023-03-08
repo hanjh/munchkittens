@@ -3,21 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CountdownTimer : MonoBehaviour
 { 
    public float timeValue = 90;
+   private bool isTimerActive = false;
    public TextMeshProUGUI countdownText;
+
+   private void Start() {
+      isTimerActive = true;
+   }
 
    // Update is called once per frame
    void Update()
-   { 
-      if (timeValue > 0) {
-         timeValue -= Time.deltaTime;
-      } else {
-         timeValue = 0;
+   {
+      if (isTimerActive) {
+         if (timeValue > 0) {
+            timeValue -= Time.deltaTime;
+         } else {
+            isTimerActive = false;
+            timeValue = 0;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Additive);
+         }
+         DisplayTime(timeValue);
       }
-      DisplayTime(timeValue);
    }
 
    void DisplayTime(float timeToDisplay)

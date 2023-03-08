@@ -3099,7 +3099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3476bcf14a2dc46b1d6647f1e160f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeValue: 90
+  timeValue: 84
   countdownText: {fileID: 118338238}
 --- !u!23 &95810428030795867
 MeshRenderer:
