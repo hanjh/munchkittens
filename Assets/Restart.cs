@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class Restart : MonoBehaviour {
 
     public void RestartGame()
-    {SceneManager.LoadScene("SampleScene");}
+    {
+        ComboEventManager.totalScore = 0;
+        SceneManager.LoadScene("SampleScene");
+    }
 
 }
