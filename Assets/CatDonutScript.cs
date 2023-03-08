@@ -8,9 +8,10 @@ using UnityEngine;
 
 public class CatDonutScript : MonoBehaviour
 {
-    public float destroyDelay = 2.0f;
+    public float destroyDelay = 1.0f;
     public bool attached = false;
     public bool notCollided = true;
+    public bool hitCorrectPlate = false;
 
     public string DonutColor = "white";
     [SerializeField] private AudioSource correctSound;
@@ -43,20 +44,37 @@ public class CatDonutScript : MonoBehaviour
             if (collision.gameObject.name.Contains(DonutColor))
             {
                 UnityEngine.Debug.Log("Collided with matching plate: " + collision.gameObject.name);
+                hitCorrectPlate = true;
                 if (notCollided)
                 {
                     notCollided = false;
                     correctSound.Play();
                     SendCombo();
                 }
+            }
+        }
+        else if (collision.gameObject.name.Contains("Donut"))
+        {
+            if (collision.gameObject.name.Contains(DonutColor))
+            {
+                // we hit a donut of the same color before hitting the plate, do nothing for now
+                // we will likely hit the plate soon due to gravity
+            }
+        }
+        else if (collision.gameObject.name.Contains("table"))
+        {
+            notCollided = false;
+            UnityEngine.Debug.Log("Collided with : " + collision.gameObject.name);
+            if (!hitCorrectPlate)
+            {
+                incorrectSound.Play();
                 Destroy(gameObject, destroyDelay);
             }
         }
         else
         {
-            notCollided = false;
-            UnityEngine.Debug.Log("Collided with : " + collision.gameObject.name);
-            incorrectSound.Play();
+            // we hit something that is neither the table nor a plate, likely the floor or walls
+            Destroy(gameObject, 0);
         }
     }
 
