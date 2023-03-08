@@ -20,7 +20,6 @@ public class GenerateDonuts : MonoBehaviour
     private ColorEnum currentColor;
 
     [SerializeField] private AudioSource throwSoundEffect;
-    [SerializeField] private AudioSource colorSoundEffect;
     
     // Start is called before the first frame update
     void Start()

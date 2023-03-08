@@ -24,13 +24,13 @@ public class ComboEventManager : MonoBehaviour
         }
     }
 
-    public static void IncrementComboCount(ComboEventArgs args)
+    public static void IncrementComboCount(ComboEventArgs args, AudioSource comboSoundEffect)
     {
         comboCount++;
+        UnityEngine.Debug.Log(comboCount + ", " + comboThreshold);
         if (comboCount >= comboThreshold)
         {
-            comboCount = 0;
-            SendCombo(args);
+            SendCombo(args, comboSoundEffect);
         }
     }
 
@@ -39,9 +39,10 @@ public class ComboEventManager : MonoBehaviour
         comboCount = 0;
     }
 
-    public static void SendCombo(ComboEventArgs args)
+    public static void SendCombo(ComboEventArgs args, AudioSource comboSoundEffect)
     {
         // Do something that triggers the event
+        comboSoundEffect.Play();
         UnityEngine.Debug.Log("sending combo event");
         Combo?.Invoke(args);
     }

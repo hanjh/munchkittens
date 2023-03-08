@@ -16,6 +16,7 @@ public class CatDonutScript : MonoBehaviour
     public string DonutColor = "white";
     [SerializeField] private AudioSource correctSound;
     [SerializeField] private AudioSource incorrectSound;
+    [SerializeField] private AudioSource comboSoundEffect;
 
     private Rigidbody rb;
 
@@ -109,6 +110,6 @@ public class CatDonutScript : MonoBehaviour
         // Do something that triggers the event
         ComboEventManager.ComboEventArgs args = new ComboEventManager.ComboEventArgs();
         args.data = "incrementing combo";
-        ComboEventManager.IncrementComboCount(args);
+        ComboEventManager.IncrementComboCount(args, comboSoundEffect);
     }
 }
