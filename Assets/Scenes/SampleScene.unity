@@ -123,6 +123,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &20007704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 20007705}
+  - component: {fileID: 20007707}
+  - component: {fileID: 20007706}
+  m_Layer: 0
+  m_Name: RNG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &20007705
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20007704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1097.9484, y: 299.3964, z: -5.463337}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &20007706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20007704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4814cb3b90b2a348ac38e83edc94600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &20007707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20007704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b12d8887bd81ca4a83dab5a14b9fa0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  donut: {fileID: 0}
+  whiteDonut: {fileID: 0}
+  blackDonut: {fileID: 0}
+  orangeDonut: {fileID: 0}
+  nextDonut: {fileID: 0}
+  distanceFromCamera: 2
+  scale: 0.1
+  nextScale: 0.1
+  throwForce: 20
+  spinForce: 20
+  throwSoundEffect: {fileID: 0}
+  colorSoundEffect: {fileID: 0}
 --- !u!1 &47235439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,8 +1728,10 @@ MonoBehaviour:
   whiteDonut: {fileID: 919132147930347817}
   blackDonut: {fileID: 258189166}
   orangeDonut: {fileID: 418286703}
+  nextDonut: {fileID: 0}
   distanceFromCamera: 2
   scale: 0.4
+  nextScale: 0.1
   throwForce: 25
   spinForce: 20
   throwSoundEffect: {fileID: 951990111}
@@ -1871,6 +1942,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &951990114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951990106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4814cb3b90b2a348ac38e83edc94600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
